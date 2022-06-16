@@ -39,16 +39,22 @@ document.addEventListener('DOMContentLoaded',function(){
                 ul.appendChild(li) 
                 
             }
-            const filtered=array.filter(item => item.charAt(0)=='a')
-            for (const item of filtered) {
-                console.log(item);
-                const li=document.createElement(`li`)
-                li.innerText=item
-                ul.appendChild(li)
-
-
+            //filtered from major list of breed
+            const selected=document.getElementById('breed-dropdown')
+            const value=selected.value
+            selected.onchange=dropDown(value)
+            function dropDown(e){
+                console.log(e);
+                const filtered=array.filter(item => item.charAt(0)==e)
+                for (const item of filtered) {
+                    console.log(item);
+                    const li=document.createElement(`li`)
+                    li.innerText=item
+                    ul.appendChild(li)
+    
+                }
+                
             }
-            
             
 
         }))
