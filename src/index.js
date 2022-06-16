@@ -27,12 +27,28 @@ document.addEventListener('DOMContentLoaded',function(){
     }
     function animalBreed(){
         return fetch(breedUrl).then(respose=>respose.json().then(data=>{
-            let array=[]
+            
             breeds=data.message
+            const ul=document.querySelector('#dog-breeds')
+            const array=[]
             for(breed in breeds){
-            if(breed.charAt(0)=='be'){
-                array.push(breed.key())
-            };}
+                
+                const li=document.createElement(`li`)
+                const bredd=breed.toString()
+                array.push(bredd)
+                ul.appendChild(li) 
+                
+            }
+            const filtered=array.filter(item => item.charAt(0)=='a')
+            for (const item of filtered) {
+                console.log(item);
+                const li=document.createElement(`li`)
+                li.innerText=item
+                ul.appendChild(li)
+
+
+            }
+            
             
 
         }))
